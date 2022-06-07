@@ -1,0 +1,45 @@
+﻿@*
+    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
+*@
+@{
+    IList<Material> materiales = Model;
+}
+
+<div class="container">
+    @if(materiales.Any()){
+        <div class="row" id="materialList">
+        
+            @foreach (Material material in materiales) {
+                <div class="col-md-3 material-row">
+                    <div>
+                        <img class="img-thumbnail" src="https://www.adobe.com/es/express/create/cover/media_10487a00f81e45735d68f68bc2739b65bb4997de1.png?width=400&format=png&optimize=medium"/>
+                        <div>
+                            <h5 class="titulo mt-1">@material.Titulo</h5>
+                            <p><strong>Categoria: </strong><span class="categoria">@material.Categoria</span></p>
+                            <p><strong>Páginas: </strong><span class="paginas">@material.Paginas</span></p>
+                            <button type="button" class="btn btn-danger delete-material mt-1" data-itemid="@material.Id"><strong><i class="fa fa-plus-circle"></i> BORRAR</strong></button>
+                            @*<select class="form-control autores">
+                                @if (material.Autores != null)
+                                    foreach (Autor autor in material.Autores) {
+                                        <option>@autor.Name</option>
+                                    }
+                                }else{
+                                    <option>Sin autores</option>
+                                }
+                            </select>*@
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <a asp-action="ListaMaterialReserva" asp-controller="Reserva" class="btn btn-info">Regresar</a>
+            <a asp-action="ReservaFormulario" asp-controller="Reserva" class="btn btn-primary">Finalizar</a>
+        </div>
+    }else{
+        <div class="d-flex justify-content-center mt-5">
+            <h3 class="title">No hay material en el listado de reserva</h3>
+        </div>
+    }
+
+</div>

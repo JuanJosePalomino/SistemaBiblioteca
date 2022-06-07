@@ -1,0 +1,53 @@
+﻿@{
+}
+
+<div class="row d-flex justify-content-center align-items-end mt-5 mb-5">
+        <div class="col-md-4">
+            <label for="userId">Identificación del usuario</label>
+            <input type="number" class="form-control" id="userId"/>
+        </div>
+        <div class="col-md-2">
+            <button type="button" class="btn btn-primary" id="validar">Validar</button>
+        </div>
+</div>
+
+<div class="row d-flex justify-content-center align-items-center flex-column fields-container">
+    <div class="col-md-6">
+        <label for="startDateFormInfo">Fecha de inicio reserva</label>
+        <input type="date" class="form-control mb-2" value="@DateTime.Now" id="startDateFormInfo" disabled/>
+
+        <label for="endDateFormInfo">Fecha de final reserva</label>
+        <input type="date" class="form-control mb-2" id="endDateFormInfo" disabled/>
+
+
+        <label for="daysFormInfo">Dias reserva</label>
+        <input type="number" class="form-control mb-2" id="daysFormInfo" disabled/>
+
+        <div class="d-flex">
+            <button type="button" class="btn btn-primary" id="reservar">Reservar</button>
+            <a asp-action="ListaMaterialReserva" asp-controller="Reserva" class="btn btn-primary" style="margin-left:10px;" id="backToMaterialButton">Continuar escogiendo material</a>
+        <div>
+    </div>
+</div>
+
+<div class="modal fade" id="modalConfirmation" role="dialog">
+    <div class="modal-dialog">
+    
+        <!-- Modal content-->
+        <div class="modal-content">
+        <div class="modal-header">
+            <h4 class="modal-title">Confirmación reserva</h4>
+        </div>
+        <div class="modal-body">
+            <p>Esta es una ventana de confirmación</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary" id="completeReservation">Completar reserva</button>
+            <button class="btn btn-info" id="showReservationMaterial">Ver material a reservar</button>
+        </div>
+        </div>
+      
+    </div>
+</div>
+
+

@@ -1,0 +1,44 @@
+﻿
+@{
+    Material material = Model;
+}
+
+<div class="row">
+    <div class="col-md-5 d-flex justify-content-end">
+        <img class="img-thumbnail" src="https://www.adobe.com/es/express/create/cover/media_10487a00f81e45735d68f68bc2739b65bb4997de1.png?width=400&format=png&optimize=medium"/>
+    </div>
+    <div class="col-md-6">
+        <h4 class="mb-4">@material.Titulo</h4>
+        <h5><strong>Categoria: </strong>@material.Categoria</h5>
+        <h5><strong>Autor: </strong>Alguien</h5>
+        <h5><strong>Número de páginas: </strong>@material.Paginas</h5>
+        <h5><strong>ISBN: </strong>@material.ISBN</h5>
+        <h5><strong>Tipo: </strong>@material.Tipo</h5>
+        <div class="col-md-6">
+            <label for="startDate"><strong>Start date</strong></label>
+            <input type="date" class="form-control mb-2" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="startDate"/>
+        </div>
+
+        <div class="col-md-6">
+            <label for="endDate"><strong>End date</strong></label>
+            <input type="date" class="form-control mb-2" value="@DateTime.Now.ToString("yyyy-MM-dd")" id="endDate"/>
+        </div>
+        @if (@material.State) {
+            <div class="d-flex justify-content-between mt-5">
+                <button type="button" class="btn btn-danger" onclick="window.history.go(-1)">CANCELAR</button>
+                <a asp-action="ReservaFormulario" asp-controller="Reserva" class="btn btn-primary" id="addMaterialToReserve" data-itemid="@material.Id">SIGUIENTE</a>
+            </div>
+        }
+
+            
+        <p class="mt-2"><strong><small style="color:@String.Format("{0}", material.State ? "green" : "red")">@String.Format("{0}", material.State ? "Disponible" : "No disponible")</small></strong></p>
+    </div>
+
+
+
+    <div class="d-flex justify-content-between mt-5"> 
+        <p><small><strong>Usuario: </strong>Juan Jose</small></p>
+        <p><small><strong>Identificación: </strong>1001470202</small></p>
+        <p><small><strong>Material en reseva: </strong><span class="quantity-material-reservation">0</span></small></p>
+    </div>
+</div>
